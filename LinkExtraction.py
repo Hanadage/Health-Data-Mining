@@ -16,22 +16,27 @@ driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), opti
 # Wayback Machine snapshot URL
 wayback_url = "https://web.archive.org/web/20120101000000*/https://www.nejmcareercenter.org/jobs/"
 
+
 # Open the Wayback Machine snapshot
 driver.get(wayback_url)
 
 # Wait for the page to load fully
 time.sleep(5)
 
-# Extract all the links on the page
-links = driver.find_elements(By.TAG_NAME, 'a')
 
 # Filter and collect relevant links
-filtered_links = []
-for link in links:
-    href = link.get_attribute('href')
-    if href and "web.archive.org" in href and any(char.isdigit() for char in href):
-        filtered_links.append(href)
-
+filtered_links = [    "https://web.archive.org/web/20120901000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20130501000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20140401000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20160515000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20170315000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20180401000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20190301000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20201101000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20211001000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20220501000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20230501000000*/https://www.nejmcareercenter.org/jobs/",
+    "https://web.archive.org/web/20240401000000*/https://www.nejmcareercenter.org/jobs/"]
 # Print the filtered links
 for fl in tqdm(filtered_links, desc="Processing filtered links"):
     print(f"Opening link: {fl}")
