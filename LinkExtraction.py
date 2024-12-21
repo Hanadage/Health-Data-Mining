@@ -14,13 +14,15 @@ options.add_argument('--disable-gpu')  # Disable GPU for headless mode
 driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=options)
 
 # Wayback Machine snapshot URL
-wayback_url = "https://web.archive.org/web/20131215000000*/https://www.nejmcareercenter.org/jobs/"
+wayback_url = "https://web.archive.org/web/20120101000000*/https://www.nejmcareercenter.org/jobs/"
+
 
 # Open the Wayback Machine snapshot
 driver.get(wayback_url)
 
 # Wait for the page to load fully
 time.sleep(5)
+
 
 # Filter and collect relevant links
 filtered_links = [    "https://web.archive.org/web/20120901000000*/https://www.nejmcareercenter.org/jobs/",
@@ -35,7 +37,6 @@ filtered_links = [    "https://web.archive.org/web/20120901000000*/https://www.n
     "https://web.archive.org/web/20220501000000*/https://www.nejmcareercenter.org/jobs/",
     "https://web.archive.org/web/20230501000000*/https://www.nejmcareercenter.org/jobs/",
     "https://web.archive.org/web/20240401000000*/https://www.nejmcareercenter.org/jobs/"]
-
 # Print the filtered links
 for fl in tqdm(filtered_links, desc="Processing filtered links"):
     print(f"Opening link: {fl}")
